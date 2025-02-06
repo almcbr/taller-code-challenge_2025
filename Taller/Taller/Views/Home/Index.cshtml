@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Taller.Models.User
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -7,10 +9,16 @@
 
     <form asp-controller="User" asp-action="GetUser" method="get">
         <div class="form-group">
-            <label for="UserName">User name</label>
-            <input type="text" id="UserName" name="UserName" class="form-control" />
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
-
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

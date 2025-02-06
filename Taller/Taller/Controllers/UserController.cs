@@ -16,9 +16,9 @@ namespace Taller.Controllers
         }
 
         [HttpGet("GetUser")]
-        public async Task<IActionResult> GetUser(string username)
+        public async Task<IActionResult> GetUser(string Name)
         {
-            if (string.IsNullOrWhiteSpace(username))
+            if (string.IsNullOrWhiteSpace(Name))
             {
                 return BadRequest("Invalid input.");
             }
@@ -29,7 +29,7 @@ namespace Taller.Controllers
                 //A better approach would be to put this data access code in a separate layer,
                 //but for lack of time I couldn't do that.
                 var user = await _context.Users
-                    .Where(u => u.Name == username)
+                    .Where(u => u.Name == Name)
                     .Select(u => new { Name = u.Name })
                     .FirstOrDefaultAsync();
 

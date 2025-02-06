@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddDbContext<TallerDbContext>(options =>
-    options.UseSqlite("Data Source=MeuBancoDados.db"));
+    options.UseSqlite("Data Source=TallerDatabase.db"));
 
 var app = builder.Build();
 
@@ -28,6 +28,13 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<TallerDbContext>();
+    context.Database.Migrate();
+}
 
 
 app.UseRouting();

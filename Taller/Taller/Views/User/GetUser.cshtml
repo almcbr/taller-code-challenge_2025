@@ -1,0 +1,27 @@
+﻿@model Taller.Models.User
+
+@{
+    ViewData["Title"] = "User";
+}
+
+<div>
+    <h4>User search result</h4>
+    <hr />
+
+    @if (Model == null)
+    {
+        <div>
+            <h4>User not found</h4>
+        </div>
+    }
+    else
+    {
+        <div>
+            <h4>Hello @Html.DisplayFor(model => model.Name)</h4>
+        </div>
+    }
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to search page</a>
+</div>

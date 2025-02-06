@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Employer Portal</h1>
+
+    <form asp-controller="User" asp-action="GetUser" method="get">
+        <div class="form-group">
+            <label for="UserName">User name</label>
+            <input type="text" id="UserName" name="UserName" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+</div>
